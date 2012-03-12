@@ -68,7 +68,7 @@ public class PrimitiveGUI extends JFrame
 	        mainPanel.add(top);//Activate top panel
 	        
 	        JPanel mid = new JPanel(new BorderLayout());//Mid panel definition, insert picture here
-	        BufferedImage nomisSplash = ImageIO.read(new File("resources/images/main.png")); //Edit image path first
+	        BufferedImage nomisSplash = ImageIO.read(new File("D:/Documents/My Java/Nomis/src/splash1.png")); //Edit image path first
 	        JLabel picLabel = new JLabel(new ImageIcon(nomisSplash));
 	        mid.add(picLabel);
 	        mainPanel.add(mid);
@@ -76,12 +76,24 @@ public class PrimitiveGUI extends JFrame
 	        
 	        JPanel bot = new JPanel(new FlowLayout(FlowLayout.LEFT));//Bottom panel definition
 	        JButton play = new JButton("Start Game");
-	        JButton options = new JButton("Options");
-	        JButton about = new JButton("About");
+	        play.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent event) {
+	        		NullLayout ng1 = new NullLayout();
+                    ng1.setVisible(true);
+	        	}
+	        });
+	        JButton instructions = new JButton("Instructions");
+	        instructions.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent event) {
+		        	InstructionsDialog ins = new InstructionsDialog();
+	                ins.setVisible(true);
+		        }
+		    });
+	        JButton about = new JButton("Credits");
 	        about.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent event) {
-	        		//AboutDialog ad = new AboutDialog();
-                   // ad.setVisible(true);
+	        		AboutDialog ad = new AboutDialog();
+                    ad.setVisible(true);
 	        	}
 	        });
 	        JButton exit = new JButton("Exit");
@@ -92,26 +104,11 @@ public class PrimitiveGUI extends JFrame
 	        });
 	        
 	        bot.add(play);
-	        bot.add(options);
+	        bot.add(instructions);
 	        bot.add(about);
 	        bot.add(exit);
-	        bot.setMaximumSize(new Dimension(330, 0));
+	        bot.setMaximumSize(new Dimension(360, 0));
 	        mainPanel.add(bot);
-
-
-	        //pack();
-	    	
-	    	/*JButton Abutton = new JButton("A"); //Define button template
-	    	Abutton.setBounds(50, 35, 100, 100);
-	        Abutton.setToolTipText("Button A");
-	        Abutton.addActionListener(new ActionListener()
-	        
-	        {
-	        	public void actionPerformed(ActionEvent event) //Code to execute on button
-	        	{
-	        		//Insert action here
-	        	}
-	        });*/
 	        
 	    	
 	 }
@@ -132,7 +129,7 @@ public class PrimitiveGUI extends JFrame
 	                System.exit(0);
 	            }
 	        });
-	     JMenuItem vEasy = new JMenuItem("Very Easy");
+	     JMenuItem vEasy = new JMenuItem("Very Easy (Unavailable)");
 	     vEasy.setToolTipText("Start a new game at very easy difficulty.");
 	     vEasy.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
@@ -140,7 +137,7 @@ public class PrimitiveGUI extends JFrame
 	    	 }
 	     });
 	     
-	     JMenuItem nEasy = new JMenuItem("Easy");
+	     JMenuItem nEasy = new JMenuItem("Easy (Unavailable)");
 	     nEasy.setToolTipText("Start a new game at easy difficulty");
 	     nEasy.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
@@ -152,18 +149,18 @@ public class PrimitiveGUI extends JFrame
 	     nMedium.setToolTipText("Start a new game at medium difficulty");
 	     nMedium.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
-	    		 //Insert action here
+	    		 NullLayout ng1 = new NullLayout();
+                 ng1.setVisible(true);
 	    	 }
 	     });
-	     
-	     JMenuItem nHard = new JMenuItem("Hard");
+	     JMenuItem nHard = new JMenuItem("Hard (Unavailable)");
 	     nHard.setToolTipText("Start a new game at hard difficulty");
 	     nHard.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
 	    		 //Insert action here
 	    	 }
 	     });
-	     JMenuItem hell = new JMenuItem("Hell");
+	     JMenuItem hell = new JMenuItem("Hell (Unavailable)");
 	     hell.setToolTipText("Start a new game at Hell difficulty, play if you want to go to hell.");
 	     hell.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
@@ -182,7 +179,8 @@ public class PrimitiveGUI extends JFrame
 	     aInstructions.setToolTipText("View instructions");
 	     aInstructions.addActionListener(new ActionListener() {
 	     	public void actionPerformed(ActionEvent event) {
-	     		//Insert action here
+        		InstructionsDialog ins = new InstructionsDialog();
+                ins.setVisible(true);
 	     	}
 	 	 });
 	     
@@ -190,7 +188,8 @@ public class PrimitiveGUI extends JFrame
 	     aCredits.setToolTipText("View credits");
 	     aCredits.addActionListener(new ActionListener() {
 	     	public void actionPerformed(ActionEvent event) {
-	     		//Insert action here
+	     		AboutDialog ad = new AboutDialog();
+                ad.setVisible(true);
 	     	}
 	 	 });
 	     
@@ -219,7 +218,7 @@ public class PrimitiveGUI extends JFrame
 		 JLabel statusbar = new JLabel();
 	     statusbar.setPreferredSize(new Dimension(-1, 22));
 	     statusbar.setBorder(LineBorder.createGrayLineBorder());
-	     statusbar.setText("Add status text");
+	     statusbar.setText("Choose a menu option");
 	     add(statusbar, BorderLayout.SOUTH);
 	 }
 	 
