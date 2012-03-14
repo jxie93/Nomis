@@ -22,9 +22,12 @@ public class NullLayout extends JFrame {
 	private JLabel label;
 	boolean isTrue;
 	
+	
 	private JButton[] buttonArray = new JButton[9];
 
 	public NullLayout(int size) {
+	
+		
 		
 		buttonArray[0]=jb0;
 		buttonArray[1]=jb1;
@@ -51,31 +54,41 @@ public class NullLayout extends JFrame {
 		
 		Container c = getContentPane();
 		c.setLayout(null);
+		
 		ImageIcon image0 = new ImageIcon("resources/icons/red1.png");
+		final ImageIcon image01 = new ImageIcon("resources/icons/green1.png");
 		jb0 = new JButton();
 		jb0.setIcon(image0);
 		ImageIcon image1 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image11 = new ImageIcon("resources/icons/green1.png");
 		jb1 = new JButton();
 		jb1.setIcon(image1);
 		ImageIcon image2 = new ImageIcon("resources/icons/yellow1.png");
+		final ImageIcon image21 = new ImageIcon("resources/icons/green1.png");
 		jb2 = new JButton();
 		jb2.setIcon(image2);
 		ImageIcon image3 = new ImageIcon("resources/icons/brown1.png");
+		final ImageIcon image31 = new ImageIcon("resources/icons/green1.png");
 		jb3 = new JButton();
 		jb3.setIcon(image3);
 		ImageIcon image4 = new ImageIcon("resources/icons/violet1.png");
+		final ImageIcon image41 = new ImageIcon("resources/icons/green1.png");
 		jb4 = new JButton();
 		jb4.setIcon(image4);
 		ImageIcon image5 = new ImageIcon("resources/icons/blue1.png");
+		final ImageIcon image51 = new ImageIcon("resources/icons/green1.png");
 		jb5 = new JButton();
 		jb5.setIcon(image5);
 		ImageIcon image6 = new ImageIcon("resources/icons/dgreen1.png");
+		final ImageIcon image61 = new ImageIcon("resources/icons/green1.png");
 		jb6 = new JButton();
 		jb6.setIcon(image6);
 		ImageIcon image7 = new ImageIcon("resources/icons/white1.png");
+		final ImageIcon image71 = new ImageIcon("resources/icons/green1.png");
 		jb7 = new JButton();
 		jb7.setIcon(image7);
 		ImageIcon image8 = new ImageIcon("resources/icons/cyan1.png");
+		final ImageIcon image81 = new ImageIcon("resources/icons/green1.png");
 		jb8 = new JButton();
 		jb8.setIcon(image8);
 		final ImageIcon image9 = new ImageIcon("");
@@ -85,7 +98,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			    	label.setText("String 0");
-
+			    	jb0.setIcon(image01);
 			    	}
 
 			   }
@@ -95,7 +108,8 @@ public class NullLayout extends JFrame {
 		jb1.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
-			     label.setText("String 1");	    
+			     label.setText("String 1");	
+			     jb1.setIcon(image11);
 			    }
 		 
 			   }
@@ -105,6 +119,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 2");
+			     jb2.setIcon(image21);
 			    }
 		 
 			   }
@@ -114,6 +129,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 3");
+			     jb3.setIcon(image31);
 			    }
 		 
 			   }
@@ -123,6 +139,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 4");
+			     jb4.setIcon(image41);
 			    }
 		 
 			   }
@@ -132,6 +149,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 5");
+			     jb5.setIcon(image51);
 			    }
 		 
 			   }
@@ -141,6 +159,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 6");
+			     jb6.setIcon(image61);
 			    }
 		 
 			   }
@@ -150,6 +169,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 7");
+			     jb7.setIcon(image71);
 			    }
 		 
 			   }
@@ -159,6 +179,7 @@ public class NullLayout extends JFrame {
 			   public void actionPerformed(ActionEvent arg0) {
 			    if(isTrue){
 			     label.setText("String 8");
+			     jb8.setIcon(image81);
 			     }
 			   
 			   }
