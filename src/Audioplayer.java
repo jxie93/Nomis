@@ -3,41 +3,55 @@ import java.io.*;
 import javax.lang.model.element.NestingKind;
 import javax.sound.sampled.*;
 import javax.swing.*;
-   
+
 // To play sound using Clip, the process need to be alive.
 // Hence, we use a Swing application.
 public class Audioplayer extends JFrame {
 
-// Constructor
-   public Audioplayer() {
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setTitle("Music Background");
-      this.setSize(300, 200);
-      this.setVisible(true);
-   
-      // TODO Use relative path when refering to resources, as this project needs to be able to be implemented on any machine
-      
-     // try {
-         // Open an audio input stream.
-    	  //File soundFile = new File("C:/Users/Victor Ng/workspace/Inf-1 OOP project/Music/85046_newgrounds_parago.wav");
+	// Constructor
+	public Audioplayer() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("Music Background");
+		this.setSize(300, 200);
+		this.setVisible(true);
 
-    	  File soundFile = new File("resources/music/scifi002.wav");
+		// TODO Use relative path when refering to resources, as this project needs to be able to be implemented on any machine
 
-    	 // File soundFile = new File("music/scifi002.wav");
+		// try {
+		// Open an audio input stream.
+		//File soundFile = new File("C:/Users/Victor Ng/workspace/Inf-1 OOP project/Music/85046_newgrounds_parago.wav");
 
-    	  
-    	 // AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
-         // Get a sound clip resource.
-        // Clip clip = AudioSystem.getClip();
-         // Open audio clip and load samples from the audio input stream.
-         //clip.open(audioIn);
-         //clip.start();
-         //clip.loop(Clip.LOOP_CONTINUOUSLY);  // repeat forever
-         
-         SoundEffect newSound = SoundEffect.BUTTON1;
-         newSound.play();
-         
-       /*  
+		File soundFile = new File("resources/music/scifi002.wav");
+
+		// File soundFile = new File("music/scifi002.wav");
+
+
+		// AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+		// Get a sound clip resource.
+		// Clip clip = AudioSystem.getClip();
+		// Open audio clip and load samples from the audio input stream.
+		//clip.open(audioIn);
+		//clip.start();
+		//clip.loop(Clip.LOOP_CONTINUOUSLY);  // repeat forever
+
+		try {
+			final Clip clip = AudioSystem.getClip();
+			clip.addLineListener(new LineListener() {
+				public void update(LineEvent myLineEvent) {
+					if (myLineEvent.getType() == LineEvent.Type.STOP) {
+						clip.close();
+					}
+				}
+			});
+			SoundEffect.BUTTON1.play(clip);
+			try { Thread.sleep(100); } catch (InterruptedException e) { }
+			SoundEffect.BUTTON2.play(clip);
+		} catch (LineUnavailableException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		/*  
       } catch (UnsupportedAudioFileException e) {
          e.printStackTrace();
       } catch (IOException e) {
@@ -45,13 +59,13 @@ public class Audioplayer extends JFrame {
       } catch (LineUnavailableException e) {
          e.printStackTrace();
       }
-      
-      */
-   }
-   
-   public static void main(String[] args) {
-      Audioplayer a = new Audioplayer ();
-      
 
-   }
+		 */
+	}
+
+	public static void main(String[] args) {
+		Audioplayer a = new Audioplayer ();
+
+
+	}
 }
