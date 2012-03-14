@@ -7,6 +7,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.Timer;
 
 import javax.swing.*;
@@ -15,12 +18,24 @@ public class NullLayout extends JFrame {
 	
 	ArrayList seq = new ArrayList();
 
-	private JButton jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9;
+	private JButton jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8;
 	private JLabel label;
 	boolean isTrue;
-
 	
-	public NullLayout() {
+	private JButton[] buttonArray = new JButton[9];
+
+	public NullLayout(int size) {
+		
+		buttonArray[0]=jb0;
+		buttonArray[1]=jb1;
+		buttonArray[2]=jb2;
+		buttonArray[3]=jb3;
+		buttonArray[4]=jb4;
+		buttonArray[5]=jb5;
+		buttonArray[6]=jb6;
+		buttonArray[7]=jb7;
+		buttonArray[8]=jb8;
+		
 		// TODO Auto-generated constructor stub
 		isTrue=true;
 		JPanel mainPanel = new JPanel();//Base panel definition
@@ -36,46 +51,35 @@ public class NullLayout extends JFrame {
 		
 		Container c = getContentPane();
 		c.setLayout(null);
-		ImageIcon image0 = new ImageIcon("D:/Documents/My Java/Nomis/src/red1.png");
+		ImageIcon image0 = new ImageIcon("resources/icons/red1.png");
 		jb0 = new JButton();
 		jb0.setIcon(image0);
-		ImageIcon image1 = new ImageIcon("D:/Documents/My Java/Nomis/src/green1.png");
+		ImageIcon image1 = new ImageIcon("resources/icons/green1.png");
 		jb1 = new JButton();
 		jb1.setIcon(image1);
-		ImageIcon image2 = new ImageIcon("D:/Documents/My Java/Nomis/src/yellow1.png");
+		ImageIcon image2 = new ImageIcon("resources/icons/yellow1.png");
 		jb2 = new JButton();
 		jb2.setIcon(image2);
-		ImageIcon image3 = new ImageIcon("/D:/Documents/My Java/Nomis/src/brown1.png");
+		ImageIcon image3 = new ImageIcon("resources/icons/brown1.png");
 		jb3 = new JButton();
 		jb3.setIcon(image3);
-		ImageIcon image4 = new ImageIcon("D:/Documents/My Java/Nomis/src/violet1.png");
+		ImageIcon image4 = new ImageIcon("resources/icons/violet1.png");
 		jb4 = new JButton();
 		jb4.setIcon(image4);
-		ImageIcon image5 = new ImageIcon("D:/Documents/My Java/Nomis/src/blue1.png");
+		ImageIcon image5 = new ImageIcon("resources/icons/blue1.png");
 		jb5 = new JButton();
 		jb5.setIcon(image5);
-		ImageIcon image6 = new ImageIcon("D:/Documents/My Java/Nomis/src/dgreen1.png");
+		ImageIcon image6 = new ImageIcon("resources/icons/dgreen1.png");
 		jb6 = new JButton();
 		jb6.setIcon(image6);
-		ImageIcon image7 = new ImageIcon("/D:/Documents/My Java/Nomis/src/white1.png");
+		ImageIcon image7 = new ImageIcon("resources/icons/white1.png");
 		jb7 = new JButton();
 		jb7.setIcon(image7);
-		ImageIcon image8 = new ImageIcon("D:/Documents/My Java/Nomis/src/cyan1.png");
+		ImageIcon image8 = new ImageIcon("resources/icons/cyan1.png");
 		jb8 = new JButton();
 		jb8.setIcon(image8);
 		final ImageIcon image9 = new ImageIcon("");
-		jb9 = new JButton();
-		jb9.setIcon(image9);
-		
-		
-		/*Flash f1 = new Flash();
-		jb0.addActionListener(f1);
-		
 
-		Timer timer = new Timer(500,f1);
-		timer.setInitialDelay(1000);
-		timer.start();*/
-	
 		
 		jb0.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
@@ -160,15 +164,40 @@ public class NullLayout extends JFrame {
 			   }
 		 });
 		
-		jb9.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 9");
-			     }
-			   
-			   }
-		 });
 		
+		
+		if(size==4)
+		{
+			jb0.setBounds(0, 0, 120, 125);
+			c.add(jb0);
+			jb1.setBounds(125, 0, 120, 125);
+			c.add(jb1);
+			jb3.setBounds(0, 130, 120, 125);
+			c.add(jb3);
+			jb4.setBounds(125, 130, 120, 125);
+			c.add(jb4);
+			setSize(250, 600);
+		}
+		
+		if(size==6)
+		{
+			jb0.setBounds(0, 0, 120, 125);
+			c.add(jb0);
+			jb1.setBounds(125, 0, 120, 125);
+			c.add(jb1);
+			jb2.setBounds(250,0, 120, 125);
+			c.add(jb2);
+			jb3.setBounds(0, 130, 120, 125);
+			c.add(jb3);
+			jb4.setBounds(125, 130, 120, 125);
+			c.add(jb4);
+			jb5.setBounds(250, 130, 120, 125);
+			c.add(jb5);
+			setSize(380, 600);
+		}
+		
+		if(size==9)
+		{
 		jb0.setBounds(0, 0, 120, 125);
 		c.add(jb0);
 		jb1.setBounds(125, 0, 120, 125);
@@ -187,25 +216,25 @@ public class NullLayout extends JFrame {
 		c.add(jb7);
 		jb8.setBounds(250, 260, 120, 125);
 		c.add(jb8);
-		jb9.setBounds(2, 400, 370, 130);
-		c.add(jb9);
+		
+		setSize(380, 600);
+		}
 		
 		label.setBounds(180,550,100,30);
 		c.add(label);
 		
-		setSize(380, 600);
+		
 		setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	/*class Flash implements ActionListener {
-
-	    public void actionPerformed(ActionEvent e) {
-	        jb0.setVisible(false);
-	    }
-	}*/
-
+	public JButton getButton(int buttonNo)
+	{
+		return buttonArray[buttonNo];
+		
+	}
+	
 	public static void main(String[] args) {
-		new NullLayout();
+		new NullLayout(4);
 	}
 }
