@@ -21,12 +21,30 @@ public class NullLayout extends JFrame {
 	private JButton jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8;
 	private JLabel label;
 	boolean isTrue;
+	private int changebutton0;
+	private int changebutton1;
+	private int changebutton2;
+	private int changebutton3;
+	private int changebutton4;
+	private int changebutton5;
+	private int changebutton6;
+	private int changebutton7;
+	private int changebutton8;
+	
 	
 	
 	private JButton[] buttonArray = new JButton[9];
 
 	public NullLayout(int size) {
-	
+		changebutton0 =0;
+		changebutton1 =0;
+		changebutton2 =0;
+		changebutton3 =0;
+		changebutton4 =0;
+		changebutton5 =0;
+		changebutton6 =0;
+		changebutton7 =0;
+		changebutton8 =0;
 		
 		
 		buttonArray[0]=jb0;
@@ -55,134 +73,311 @@ public class NullLayout extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(null);
 		
-		ImageIcon image0 = new ImageIcon("resources/icons/red1.png");
-		final ImageIcon image01 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image0 = new ImageIcon("resources/icons/red1.png");
+		final ImageIcon image01 = new ImageIcon("resources/icons/red2.gif");
 		jb0 = new JButton();
 		jb0.setIcon(image0);
-		ImageIcon image1 = new ImageIcon("resources/icons/green1.png");
-		final ImageIcon image11 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image1 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image11 = new ImageIcon("resources/icons/green2.gif");
 		jb1 = new JButton();
 		jb1.setIcon(image1);
-		ImageIcon image2 = new ImageIcon("resources/icons/yellow1.png");
-		final ImageIcon image21 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image2 = new ImageIcon("resources/icons/yellow1.png");
+		final ImageIcon image21 = new ImageIcon("resources/icons/yellow2.gif");
 		jb2 = new JButton();
 		jb2.setIcon(image2);
-		ImageIcon image3 = new ImageIcon("resources/icons/brown1.png");
-		final ImageIcon image31 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image3 = new ImageIcon("resources/icons/brown1.png");
+		final ImageIcon image31 = new ImageIcon("resources/icons/brown2.gif");
 		jb3 = new JButton();
 		jb3.setIcon(image3);
-		ImageIcon image4 = new ImageIcon("resources/icons/violet1.png");
-		final ImageIcon image41 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image4 = new ImageIcon("resources/icons/violet1.png");
+		final ImageIcon image41 = new ImageIcon("resources/icons/violet2.gif");
 		jb4 = new JButton();
 		jb4.setIcon(image4);
-		ImageIcon image5 = new ImageIcon("resources/icons/blue1.png");
-		final ImageIcon image51 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image5 = new ImageIcon("resources/icons/blue1.png");
+		final ImageIcon image51 = new ImageIcon("resources/icons/blue2.gif");
 		jb5 = new JButton();
 		jb5.setIcon(image5);
-		ImageIcon image6 = new ImageIcon("resources/icons/dgreen1.png");
-		final ImageIcon image61 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image6 = new ImageIcon("resources/icons/dgreen1.png");
+		final ImageIcon image61 = new ImageIcon("resources/icons/dgreen2.gif");
 		jb6 = new JButton();
 		jb6.setIcon(image6);
-		ImageIcon image7 = new ImageIcon("resources/icons/white1.png");
-		final ImageIcon image71 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image7 = new ImageIcon("resources/icons/white1.png");
+		final ImageIcon image71 = new ImageIcon("resources/icons/white2.gif");
 		jb7 = new JButton();
 		jb7.setIcon(image7);
-		ImageIcon image8 = new ImageIcon("resources/icons/cyan1.png");
-		final ImageIcon image81 = new ImageIcon("resources/icons/green1.png");
+		final ImageIcon image8 = new ImageIcon("resources/icons/cyan1.png");
+		final ImageIcon image81 = new ImageIcon("resources/icons/cyan2.gif");
 		jb8 = new JButton();
 		jb8.setIcon(image8);
-		final ImageIcon image9 = new ImageIcon("");
+	
 
 		
 		jb0.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
+				   
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+			    if(changebutton0 % 2 == 0){
 			    	label.setText("String 0");
 			    	jb0.setIcon(image01);
 			    	}
-
+			    else {jb0.setIcon(image0);}
+			    changebutton0 = changebutton0 + 1;
+			    	jb7.setIcon(image7);
+				   jb1.setIcon(image1);
+				   jb2.setIcon(image2);
+				   jb3.setIcon(image3);
+				   jb4.setIcon(image4);
+				   jb5.setIcon(image5);
+				   jb6.setIcon(image6);
+				   jb8.setIcon(image8);
 			   }
 		 });
 		
 	
 		jb1.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 1");	
-			     jb1.setIcon(image11);
+				   changebutton0 =0;
+					
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+				   if(changebutton1 % 2 == 0){
+				    	label.setText("String 1");
+				    	jb1.setIcon(image11);
+				    	}
+				    else {jb1.setIcon(image1);}
+				    changebutton1 = changebutton1 + 1;
+				    jb0.setIcon(image0);
+					   jb7.setIcon(image7);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb4.setIcon(image4);
+					   jb5.setIcon(image5);
+					   jb6.setIcon(image6);
+					   jb8.setIcon(image8);
 			    }
 		 
-			   }
+			   
 		 });
 		
 		jb2.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 2");
-			     jb2.setIcon(image21);
-			    }
+				   
+				   changebutton0 =0;
+					changebutton1 =0;
+				
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+					   if(changebutton2 % 2 == 0){
+					    	label.setText("String 2");
+					    	jb2.setIcon(image21);
+					    	}
+					    else {jb2.setIcon(image2);}
+					    changebutton2 = changebutton2 + 1;
+					    jb0.setIcon(image0);
+						   jb1.setIcon(image1);
+						   jb7.setIcon(image7);
+						   jb3.setIcon(image3);
+						   jb4.setIcon(image4);
+						   jb5.setIcon(image5);
+						   jb6.setIcon(image6);
+						   jb8.setIcon(image8);
+				    }
 		 
-			   }
+			   
 		 });
 		
 		jb3.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 3");
-			     jb3.setIcon(image31);
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+				   if(changebutton3 % 2 == 0){
+				    	label.setText("String 3");
+				    	jb3.setIcon(image31);
+				    	}
+				    else {jb3.setIcon(image3);}
+				    changebutton3 = changebutton3 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb7.setIcon(image7);
+					   jb4.setIcon(image4);
+					   jb5.setIcon(image5);
+					   jb6.setIcon(image6);
+					   jb8.setIcon(image8);
 			    }
-		 
-			   }
+	 
+		   
 		 });
 		
 		jb4.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 4");
-			     jb4.setIcon(image41);
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+				  
+				   if(changebutton4 % 2 == 0){
+				    	label.setText("String 4");
+				    	jb4.setIcon(image41);
+				    	}
+				    else {jb4.setIcon(image4);}
+				    changebutton4 = changebutton4 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb7.setIcon(image7);
+					   jb5.setIcon(image5);
+					   jb6.setIcon(image6);
+					   jb8.setIcon(image8);
 			    }
-		 
-			   }
+	 
 		 });
 		
 		jb5.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 5");
-			     jb5.setIcon(image51);
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					
+					changebutton6 =0;
+					changebutton7 =0;
+					changebutton8 =0;
+				   
+				   if(changebutton5 % 2 == 0){
+				    	label.setText("String 5");
+				    	jb5.setIcon(image51);
+				    	}
+				    else jb5.setIcon(image5);
+				    changebutton5 = changebutton5 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb4.setIcon(image4);
+					   jb7.setIcon(image7);
+					   jb6.setIcon(image6);
+					   jb8.setIcon(image8);
 			    }
-		 
-			   }
+	 
 		 });
 		
 		jb6.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 6");
-			     jb6.setIcon(image61);
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					
+					changebutton7 =0;
+					changebutton8 =0;
+				   if(changebutton6 % 2 == 0){
+				    	label.setText("String 6");
+				    	jb6.setIcon(image61);
+				    	}
+				    else {jb6.setIcon(image6);}
+				    changebutton6 = changebutton6 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb4.setIcon(image4);
+					   jb5.setIcon(image5);
+					   jb7.setIcon(image7);
+					   jb8.setIcon(image8);
 			    }
-		 
-			   }
+	 
 		 });
 		
 		jb7.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 7");
-			     jb7.setIcon(image71);
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					
+					changebutton8 =0;
+				   
+				   if(changebutton7 % 2 == 0){
+				    	label.setText("String 7");
+				    	jb7.setIcon(image71);
+				    	}
+				    else {jb7.setIcon(image7);}
+				    changebutton7 = changebutton7 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb4.setIcon(image4);
+					   jb5.setIcon(image5);
+					   jb6.setIcon(image6);
+					   jb8.setIcon(image8);
 			    }
-		 
-			   }
+	 
 		 });
 		
 		jb8.addActionListener(new ActionListener(){
 			   public void actionPerformed(ActionEvent arg0) {
-			    if(isTrue){
-			     label.setText("String 8");
-			     jb8.setIcon(image81);
-			     }
-			   
-			   }
+				   changebutton0 =0;
+					changebutton1 =0;
+					changebutton2 =0;
+					changebutton3 =0;
+					changebutton4 =0;
+					changebutton5 =0;
+					changebutton6 =0;
+					changebutton7 =0;
+				
+				   if(changebutton8 % 2 == 0){
+				    	label.setText("String 8");
+				    	jb8.setIcon(image81);
+				    	}
+				    else {jb8.setIcon(image8);}
+				    changebutton8 = changebutton8 + 1;
+				    jb0.setIcon(image0);
+					   jb1.setIcon(image1);
+					   jb2.setIcon(image2);
+					   jb3.setIcon(image3);
+					   jb4.setIcon(image4);
+					   jb5.setIcon(image5);
+					   jb6.setIcon(image6);
+					   jb7.setIcon(image7);
+			    }
+	 
 		 });
 		
 		
@@ -256,6 +451,6 @@ public class NullLayout extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new NullLayout(4);
+		new NullLayout(9);
 	}
 }
