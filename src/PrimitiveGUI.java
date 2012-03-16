@@ -78,8 +78,8 @@ public class PrimitiveGUI extends JFrame
 	        JButton play = new JButton("Start Game");
 	        play.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent event) {
-	        		NullLayout ng1 = new NullLayout();
-                    ng1.setVisible(true);
+	        		NewGameDialog ngd1 = new NewGameDialog();
+                    ngd1.setVisible(true);
 	        	}
 	        });
 	        JButton instructions = new JButton("Instructions");
@@ -99,7 +99,8 @@ public class PrimitiveGUI extends JFrame
 	        JButton exit = new JButton("Exit");
 	        exit.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent event) {
-	        		System.exit(0);
+	        		ExitDialog ed1 = new ExitDialog();
+                    ed1.setVisible(true);
 	        	}
 	        });
 	        
@@ -129,7 +130,7 @@ public class PrimitiveGUI extends JFrame
 	                System.exit(0);
 	            }
 	        });
-	     JMenuItem vEasy = new JMenuItem("Very Easy (Unavailable)");
+	     JMenuItem vEasy = new JMenuItem("Cheat Mode (Unavailable)");
 	     vEasy.setToolTipText("Start a new game at very easy difficulty.");
 	     vEasy.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
@@ -137,11 +138,12 @@ public class PrimitiveGUI extends JFrame
 	    	 }
 	     });
 	     
-	     JMenuItem nEasy = new JMenuItem("Easy (Unavailable)");
+	     JMenuItem nEasy = new JMenuItem("Easy");
 	     nEasy.setToolTipText("Start a new game at easy difficulty");
 	     nEasy.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
-	    		 //Insert action here
+	    		 NullLayout ng1 = new NullLayout(4);
+                 ng1.setVisible(true);
 	    	 }
 	     });
 	     
@@ -149,7 +151,7 @@ public class PrimitiveGUI extends JFrame
 	     nMedium.setToolTipText("Start a new game at medium difficulty");
 	     nMedium.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
-	    		 NullLayout ng1 = new NullLayout();
+	    		 NullLayout ng1 = new NullLayout(6);
                  ng1.setVisible(true);
 	    	 }
 	     });
@@ -157,10 +159,11 @@ public class PrimitiveGUI extends JFrame
 	     nHard.setToolTipText("Start a new game at hard difficulty");
 	     nHard.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
-	    		 //Insert action here
+	    		 NullLayout ng1 = new NullLayout(9);
+                 ng1.setVisible(true);
 	    	 }
 	     });
-	     JMenuItem hell = new JMenuItem("Hell (Unavailable)");
+	     JMenuItem hell = new JMenuItem("Hell");
 	     hell.setToolTipText("Start a new game at Hell difficulty, play if you want to go to hell.");
 	     hell.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
