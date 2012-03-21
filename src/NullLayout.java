@@ -95,6 +95,13 @@ public class NullLayout extends JFrame {
 		    makeButton(i);
 		}
 
+		JButton spell = new JButton("Magic Spell");
+        spell.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//Place magic spell routine here
+        	}
+        });
+		
 		if(size==4)
 		{
 			buttonArray[0].setBounds(0, 0, 120, 125);
@@ -105,7 +112,7 @@ public class NullLayout extends JFrame {
 			c.add(buttonArray[3]);
 			buttonArray[4].setBounds(125, 130, 120, 125);
 			c.add(buttonArray[4]);
-			
+
 			JLabel scorebar = new JLabel();
 		    scorebar.setPreferredSize(new Dimension(-1, 22));
 		    scorebar.setBorder(LineBorder.createGrayLineBorder());
@@ -118,6 +125,9 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
+		    
+			spell.setBounds(120, 270, 125, 50);
+			c.add(spell);
 			setSize(250, 350);
 		}
 
@@ -148,6 +158,9 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
+		    
+		    spell.setBounds(250, 270, 125, 50);
+			c.add(spell);
 			setSize(380, 350);
 		}
 
@@ -185,6 +198,8 @@ public class NullLayout extends JFrame {
 		    itembar.setBounds(0,441,1000,25);
 		    c.add(itembar);
 		    
+		    spell.setBounds(250, 415, 125, 50);
+			c.add(spell);
 			setSize(380, 500);
 		}
 
