@@ -94,6 +94,13 @@ public class NullLayout extends JFrame {
 		for(int i = 0; i < 9; i++) {
 		    makeButton(i);
 		}
+		
+		JButton magic = new JButton("Spell");
+        magic.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//Call to magic spell activation method
+        	}
+        });
 
 		if(size==4)
 		{
@@ -118,6 +125,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
+		    magic.setBounds(150, 270, 100, 50);
+			c.add(magic);
 			setSize(250, 350);
 		}
 
@@ -148,6 +157,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
+		    magic.setBounds(275, 270, 100, 50);
+			c.add(magic);
 			setSize(380, 350);
 		}
 
@@ -184,7 +195,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,441,1000,25);
 		    c.add(itembar);
-		    
+		    magic.setBounds(275, 415, 100, 50);
+			c.add(magic);
 			setSize(380, 500);
 		}
 
@@ -213,17 +225,21 @@ public class NullLayout extends JFrame {
 			int currentButton=inputSequence.get(i);
 			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
 			stopButtonFlash(i); //Set icon back to static image after a delay
+			try{
+				Thread.sleep(500);
+			}
+			catch(InterruptedException e){}
 		}
 	}
 	
 	private void stopButtonFlash(final int c)
 	{
-		Timer timer = new Timer(500, new ActionListener() { //Timer set to 500ms, after that the button icon will be reset to its original static image
+		Timer sTimer = new Timer(500, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
 			public void actionPerformed(ActionEvent e) {
 				buttonArray[c].setIcon(imageOn[c]);
 			}
 		});
-		timer.start();
+		sTimer.start();
 	}
 	
 	public int[] returnUserIn()
@@ -237,6 +253,17 @@ public class NullLayout extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new NullLayout(9);		
+		ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+		inputSequence.add(0);
+		inputSequence.add(3);
+		inputSequence.add(2);
+		inputSequence.add(3);
+		inputSequence.add(5);
+		inputSequence.add(5);
+		inputSequence.add(6);
+		inputSequence.add(2);
+		inputSequence.add(8);
+		NullLayout nn1 = new NullLayout(4);
+		nn1.flash(inputSequence);
 	}
 }
