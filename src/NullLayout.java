@@ -218,12 +218,12 @@ public class NullLayout extends JFrame {
 		});
 }
 
-	public void flash(ArrayList<Integer> inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
+	public void flash(int[] inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
 	{
-		for (int i=0;i<inputSequence.size();i++)
+		for (int i=0;i<inputSequence.length;i++)
 		{
 			System.out.println("Start of button flash "+i);
-			int currentButton=inputSequence.get(i);
+			int currentButton=inputSequence[i];
 			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
 			stopButtonFlash(i); //Set icon back to static image after a delay
 			try{
@@ -256,7 +256,7 @@ public class NullLayout extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+		/*ArrayList<Integer> inputSequence = new ArrayList<Integer>();
 		inputSequence.add(0);
 		inputSequence.add(1);
 		inputSequence.add(3);
@@ -267,6 +267,6 @@ public class NullLayout extends JFrame {
 		inputSequence.add(7);
 		inputSequence.add(2);
 		NullLayout nn1 = new NullLayout(9);
-		nn1.flash(inputSequence);
+		nn1.flash(inputSequence);*/
 	}
 }
