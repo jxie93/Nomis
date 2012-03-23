@@ -222,11 +222,12 @@ public class NullLayout extends JFrame {
 	{
 		for (int i=0;i<inputSequence.size();i++)
 		{
+			System.out.println("Start of button flash "+i);
 			int currentButton=inputSequence.get(i);
 			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
 			stopButtonFlash(i); //Set icon back to static image after a delay
 			try{
-				Thread.sleep(500);
+				Thread.sleep(2000);
 			}
 			catch(InterruptedException e){}
 		}
@@ -234,11 +235,13 @@ public class NullLayout extends JFrame {
 	
 	private void stopButtonFlash(final int c)
 	{
-		Timer sTimer = new Timer(500, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
+		Timer sTimer = new Timer(1000, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
 			public void actionPerformed(ActionEvent e) {
 				buttonArray[c].setIcon(imageOn[c]);
+				System.out.println("End of button flash "+c);
 			}
 		});
+		sTimer.setRepeats(false);
 		sTimer.start();
 	}
 	
@@ -255,15 +258,15 @@ public class NullLayout extends JFrame {
 	public static void main(String[] args) {
 		ArrayList<Integer> inputSequence = new ArrayList<Integer>();
 		inputSequence.add(0);
+		inputSequence.add(1);
 		inputSequence.add(3);
-		inputSequence.add(2);
 		inputSequence.add(3);
-		inputSequence.add(5);
-		inputSequence.add(5);
+		inputSequence.add(4);
 		inputSequence.add(6);
-		inputSequence.add(2);
 		inputSequence.add(8);
-		NullLayout nn1 = new NullLayout(4);
+		inputSequence.add(7);
+		inputSequence.add(2);
+		NullLayout nn1 = new NullLayout(9);
 		nn1.flash(inputSequence);
 	}
 }
