@@ -26,8 +26,8 @@ public class NullLayout extends JFrame {
 	private JLabel label;
 	private int[] userInput = new int[9]; //Array to record user's interaction with buttons
 	private JButton[] buttonArray = new JButton[9]; //Array containing all buttons
-	private ImageIcon[] imageOn = new ImageIcon[9]; //Array containing all static images for buttons
-	private ImageIcon[] imageFlash = new ImageIcon[9]; //Array containing all flashing images for buttons
+	final private ImageIcon[] imageOn = new ImageIcon[9]; //Array containing all static images for buttons
+	final private ImageIcon[] imageFlash = new ImageIcon[9]; //Array containing all flashing images for buttons
 	
 
 	public NullLayout(int size) {
@@ -218,15 +218,18 @@ public class NullLayout extends JFrame {
 		});
 }
 
-	public void flash(ArrayList<Integer> inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
+	public void flash(int[] inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
 	{
-		for (int i=0;i<inputSequence.size();i++)
+		for (int i=0;i<inputSequence.length;i++)
 		{
-			int currentButton=inputSequence.get(i);
-			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
-			stopButtonFlash(i); //Set icon back to static image after a delay
+			System.out.println("Start of button flash "+i);
+			int currentButton=inputSequence[i];
+			synchronized (buttonArray) {
+				buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
+			}
+			stopButtonFlash(currentButton); //Set icon back to static image after a delay
 			try{
-				Thread.sleep(500);
+				Thread.sleep(1500);
 			}
 			catch(InterruptedException e){}
 		}
@@ -234,11 +237,16 @@ public class NullLayout extends JFrame {
 	
 	private void stopButtonFlash(final int c)
 	{
-		Timer sTimer = new Timer(500, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
+		Timer sTimer = new Timer(1000, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
 			public void actionPerformed(ActionEvent e) {
-				buttonArray[c].setIcon(imageOn[c]);
+				synchronized (buttonArray) {
+					buttonArray[c].setIcon(imageOn[c]);
+					System.out.println("c = " + c + ": " + imageOn[c]);
+				}
+				System.out.println("End of button flash "+c);
 			}
 		});
+		sTimer.setRepeats(false);
 		sTimer.start();
 	}
 	
@@ -253,17 +261,14 @@ public class NullLayout extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+		/*ArrayList<Integer> inputSequence = new ArrayList<Integer>();
 		inputSequence.add(0);
-		inputSequence.add(3);
+		inputSequence.add(7);
 		inputSequence.add(2);
-		inputSequence.add(3);
-		inputSequence.add(5);
-		inputSequence.add(5);
-		inputSequence.add(6);
-		inputSequence.add(2);
-		inputSequence.add(8);
-		NullLayout nn1 = new NullLayout(4);
-		nn1.flash(inputSequence);
+		inputSequence.add(7);
+		inputSequence.add(4);*/
+		int[] input = {1,5,3,4,5};
+		NullLayout nn1 = new NullLayout(9);
+		nn1.flash(input);
 	}
 }
