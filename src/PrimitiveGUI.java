@@ -108,7 +108,7 @@ public class PrimitiveGUI extends JFrame
 	        bot.add(instructions);
 	        bot.add(about);
 	        bot.add(exit);
-	        bot.setMaximumSize(new Dimension(360, 0));
+	        bot.setMaximumSize(new Dimension(420, 0));
 	        mainPanel.add(bot);
 	        
 	    	
@@ -127,7 +127,8 @@ public class PrimitiveGUI extends JFrame
 	     mExit.setToolTipText("Exit program");
 	     mExit.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent event) {
-	                System.exit(0);
+	            	ExitDialog ed1 = new ExitDialog();
+                    ed1.setVisible(true);
 	            }
 	        });
 	     JMenuItem vEasy = new JMenuItem("Cheat Mode (Unavailable)");
@@ -155,7 +156,7 @@ public class PrimitiveGUI extends JFrame
                  ng1.setVisible(true);
 	    	 }
 	     });
-	     JMenuItem nHard = new JMenuItem("Hard (Unavailable)");
+	     JMenuItem nHard = new JMenuItem("Hard");
 	     nHard.setToolTipText("Start a new game at hard difficulty");
 	     nHard.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
@@ -163,7 +164,7 @@ public class PrimitiveGUI extends JFrame
                  ng1.setVisible(true);
 	    	 }
 	     });
-	     JMenuItem hell = new JMenuItem("Hell");
+	     JMenuItem hell = new JMenuItem("Hell (Unavailable)");
 	     hell.setToolTipText("Start a new game at Hell difficulty, play if you want to go to hell.");
 	     hell.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {

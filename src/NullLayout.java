@@ -26,8 +26,8 @@ public class NullLayout extends JFrame {
 	private JLabel label;
 	private int[] userInput = new int[9]; //Array to record user's interaction with buttons
 	private JButton[] buttonArray = new JButton[9]; //Array containing all buttons
-	private ImageIcon[] imageOn = new ImageIcon[9]; //Array containing all static images for buttons
-	private ImageIcon[] imageFlash = new ImageIcon[9]; //Array containing all flashing images for buttons
+	final private ImageIcon[] imageOn = new ImageIcon[9]; //Array containing all static images for buttons
+	final private ImageIcon[] imageFlash = new ImageIcon[9]; //Array containing all flashing images for buttons
 	
 
 	public NullLayout(int size) {
@@ -94,14 +94,14 @@ public class NullLayout extends JFrame {
 		for(int i = 0; i < 9; i++) {
 		    makeButton(i);
 		}
-
-		JButton spell = new JButton("Magic Spell");
-        spell.addActionListener(new ActionListener() {
+		
+		JButton magic = new JButton("Spell");
+        magic.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent event) {
-        		//Place magic spell routine here
+        		//Call to magic spell activation method
         	}
         });
-		
+
 		if(size==4)
 		{
 			buttonArray[0].setBounds(0, 0, 120, 125);
@@ -125,9 +125,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
-		    
-			spell.setBounds(120, 270, 125, 50);
-			c.add(spell);
+		    magic.setBounds(150, 270, 100, 50);
+			c.add(magic);
 			setSize(250, 350);
 		}
 
@@ -158,9 +157,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,296,1000,25);
 		    c.add(itembar);
-		    
-		    spell.setBounds(250, 270, 125, 50);
-			c.add(spell);
+			magic.setBounds(275, 270, 100, 50);
+			c.add(magic);
 			setSize(380, 350);
 		}
 
@@ -197,9 +195,8 @@ public class NullLayout extends JFrame {
 		    itembar.setText("Spells remaining: ");
 		    itembar.setBounds(0,441,1000,25);
 		    c.add(itembar);
-		    
-		    spell.setBounds(250, 415, 125, 50);
-			c.add(spell);
+			magic.setBounds(275, 415, 100, 50);
+			c.add(magic);
 			setSize(380, 500);
 		}
 
@@ -221,24 +218,36 @@ public class NullLayout extends JFrame {
 		});
 }
 
-	public void flash(ArrayList<Integer> inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
+	public void flash(int[] inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
 	{
-		for (int i=0;i<inputSequence.size();i++)
+		for (int i=0;i<inputSequence.length;i++)
 		{
-			int currentButton=inputSequence.get(i);
-			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
-			stopButtonFlash(i); //Set icon back to static image after a delay
+			System.out.println("Start of button flash "+i);
+			int currentButton=inputSequence[i];
+			synchronized (buttonArray) {
+				buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
+			}
+			stopButtonFlash(currentButton); //Set icon back to static image after a delay
+			try{
+				Thread.sleep(1500);
+			}
+			catch(InterruptedException e){}
 		}
 	}
 	
 	private void stopButtonFlash(final int c)
 	{
-		Timer timer = new Timer(500, new ActionListener() { //Timer set to 500ms, after that the button icon will be reset to its original static image
+		Timer sTimer = new Timer(1000, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
 			public void actionPerformed(ActionEvent e) {
-				buttonArray[c].setIcon(imageOn[c]);
+				synchronized (buttonArray) {
+					buttonArray[c].setIcon(imageOn[c]);
+					System.out.println("c = " + c + ": " + imageOn[c]);
+				}
+				System.out.println("End of button flash "+c);
 			}
 		});
-		timer.start();
+		sTimer.setRepeats(false);
+		sTimer.start();
 	}
 	
 	public int[] returnUserIn()
@@ -252,6 +261,14 @@ public class NullLayout extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new NullLayout(9);		
+		/*ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+		inputSequence.add(0);
+		inputSequence.add(7);
+		inputSequence.add(2);
+		inputSequence.add(7);
+		inputSequence.add(4);*/
+		int[] input = {1,5,3,4,5};
+		NullLayout nn1 = new NullLayout(9);
+		nn1.flash(input);
 	}
 }

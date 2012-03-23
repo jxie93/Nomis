@@ -6,14 +6,14 @@ import javax.swing.*;
 
 // To play sound using Clip, the process need to be alive.
 // Hence, we use a Swing application.
-public class Audioplayer extends JFrame {
+public class Audioplayer {
 
 	// Constructor
 	public Audioplayer() {
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		/*this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Music Background");
 		this.setSize(300, 200);
-		this.setVisible(true);
+		this.setVisible(true);*/
 
 		// TODO Use relative path when refering to resources, as this project needs to be able to be implemented on any machine
 
@@ -44,8 +44,8 @@ public class Audioplayer extends JFrame {
 				}
 			});
 			SoundEffect.BUTTON1.play(clip);
-			try { Thread.sleep(100); } catch (InterruptedException e) { }
-			SoundEffect.BUTTON2.play(clip);
+			try { Thread.sleep(600); } catch (InterruptedException e) { }
+			SoundEffect.BUTTON6.play(clip);
 		} catch (LineUnavailableException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

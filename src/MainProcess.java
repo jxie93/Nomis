@@ -10,8 +10,8 @@ public class MainProcess {
 		if (length%5==1) itemleft = items+1;
 		else itemleft=items;
 		//for command shell play
-		System.out.println("Now you are in the level "+length);
-		System.out.println("You now have "+itemleft+" magicitems!");
+		//System.out.println("Now you are in the level "+length);
+		//System.out.println("You now have "+itemleft+" magicitems!");
 		int record[] = SequenceGenerator.SequenceGenerator(squares,length);		
 		SequenceDisplay.SequenceDisplay(squares,record);		
 		//choose to use or not use item during the next process + there should be a time limit(NOT DONE)
@@ -29,8 +29,8 @@ public class MainProcess {
 				if (itemleft>0) 
 				{
 					itemleft--;
-					System.out.println("One magic item has been used!");
-					System.out.println("You now have "+itemleft+" magicitems!");
+					//System.out.println("One magic item has been used!");
+					//System.out.println("You now have "+itemleft+" magicitems!");
 					SequenceDisplay.SequenceDisplay(squares, record);
 					counter=0;
 					continue;
@@ -38,8 +38,8 @@ public class MainProcess {
 				//no items left
 				else 
 				{
-					System.out.println("You have run out of magic items!");
-					System.out.println("Please retype sequence again!");
+					//System.out.println("You have run out of magic items!");
+					//System.out.println("Please retype sequence again!");
 					counter=0;
 					continue;
 				}
@@ -61,7 +61,7 @@ public class MainProcess {
 		//success
 		if (pass) 
 		{
-			System.out.println("You succeed!");
+			//System.out.println("You succeed!");
 			MainProcess(squares,length+1,presentmark+squares*length,itemleft);
 		}
 
