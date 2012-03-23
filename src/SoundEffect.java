@@ -21,7 +21,7 @@ public enum SoundEffect {
 	BUTTON2("scifi003.wav"),         
 	BUTTON3("scifi005.wav"),
 	BUTTON4("scifi018.wav"),
-	MAINBUTTON("Music_Background.wav");
+	MAINBUTTON("Game_Music.wav");
 
 	// Nested class for specifying volume
 	public static enum Volume {

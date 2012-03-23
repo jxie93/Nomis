@@ -44,8 +44,8 @@ public class Audioplayer extends JFrame {
 				}
 			});
 			SoundEffect.BUTTON1.play(clip);
-			try { Thread.sleep(100); } catch (InterruptedException e) { }
-			SoundEffect.BUTTON2.play(clip);
+			try { Thread.sleep(600); } catch (InterruptedException e) { }
+			SoundEffect.BUTTON3.play(clip);
 		} catch (LineUnavailableException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

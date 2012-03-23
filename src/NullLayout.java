@@ -8,45 +8,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
+/*Pass an ArrayList of generated integers as inputSequence to get this class to flash the corresponding buttons. 
+This class will produce an integer array userInput as a record of buttons pressed by the user. Use returnUserIn method to access it.*/
 
 public class NullLayout extends JFrame {
-	
-	ArrayList seq = new ArrayList();
 
 	private JButton jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8;
 	private JLabel label;
-	boolean isTrue;
-	private int changebutton0;
-	private int changebutton1;
-	private int changebutton2;
-	private int changebutton3;
-	private int changebutton4;
-	private int changebutton5;
-	private int changebutton6;
-	private int changebutton7;
-	private int changebutton8;
+	private int[] userInput = new int[9]; //Array to record user's interaction with buttons
+	private JButton[] buttonArray = new JButton[9]; //Array containing all buttons
+	private ImageIcon[] imageOn = new ImageIcon[9]; //Array containing all static images for buttons
+	private ImageIcon[] imageFlash = new ImageIcon[9]; //Array containing all flashing images for buttons
 	
-	
-	
-	private JButton[] buttonArray = new JButton[9];
 
 	public NullLayout(int size) {
-		changebutton0 =0;
-		changebutton1 =0;
-		changebutton2 =0;
-		changebutton3 =0;
-		changebutton4 =0;
-		changebutton5 =0;
-		changebutton6 =0;
-		changebutton7 =0;
-		changebutton8 =0;
+
+		for (int i=0;i<9;i++)
+		{
+			userInput[i]=0;
+		}
 		
-		
+
+		//Define button array
 		buttonArray[0]=jb0;
 		buttonArray[1]=jb1;
 		buttonArray[2]=jb2;
@@ -57,400 +49,221 @@ public class NullLayout extends JFrame {
 		buttonArray[7]=jb7;
 		buttonArray[8]=jb8;
 		
-		// TODO Auto-generated constructor stub
-		isTrue=true;
-		JPanel mainPanel = new JPanel();//Base panel definition
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        add(mainPanel);
-		setTitle("New Game");
-        setSize(new Dimension(1000, 600));
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-		label = new JLabel();
+		//Define all static image icons
+		imageOn[0]=new ImageIcon("resources/icons/red1.png");
+		imageOn[1]=new ImageIcon("resources/icons/green1.png");
+		imageOn[2]=new ImageIcon("resources/icons/yellow1.png");
+		imageOn[3]=new ImageIcon("resources/icons/brown1.png");
+		imageOn[4]=new ImageIcon("resources/icons/cyan1.png");
+		imageOn[5]=new ImageIcon("resources/icons/violet1.png");
+		imageOn[6]=new ImageIcon("resources/icons/blue1.png");
+		imageOn[7]=new ImageIcon("resources/icons/dgreen1.png");
+		imageOn[8]=new ImageIcon("resources/icons/white1.png");
 		
+		//Define all flash image icons
+		imageFlash[0]=new ImageIcon("resources/icons/red2.gif");
+		imageFlash[1]=new ImageIcon("resources/icons/green2.gif");
+		imageFlash[2]=new ImageIcon("resources/icons/yellow2.gif");
+		imageFlash[3]=new ImageIcon("resources/icons/brown2.gif");
+		imageFlash[4]=new ImageIcon("resources/icons/cyan2.gif");
+		imageFlash[5]=new ImageIcon("resources/icons/violet2.gif");
+		imageFlash[6]=new ImageIcon("resources/icons/blue2.gif");
+		imageFlash[7]=new ImageIcon("resources/icons/dgreen2.gif");
+		imageFlash[8]=new ImageIcon("resources/icons/white2.gif");
+
+
+		JPanel mainPanel = new JPanel();//Base panel definition
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		add(mainPanel);
+		setTitle("New Game");
+		setSize(new Dimension(1000, 600));
+		setLocationRelativeTo(null);
+		setResizable(false);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		label = new JLabel();
 		Container c = getContentPane();
 		c.setLayout(null);
 		
-		final ImageIcon image0 = new ImageIcon("resources/icons/red1.png");
-		final ImageIcon image01 = new ImageIcon("resources/icons/red2.gif");
-		jb0 = new JButton();
-		jb0.setIcon(image0);
-		final ImageIcon image1 = new ImageIcon("resources/icons/green1.png");
-		final ImageIcon image11 = new ImageIcon("resources/icons/green2.gif");
-		jb1 = new JButton();
-		jb1.setIcon(image1);
-		final ImageIcon image2 = new ImageIcon("resources/icons/yellow1.png");
-		final ImageIcon image21 = new ImageIcon("resources/icons/yellow2.gif");
-		jb2 = new JButton();
-		jb2.setIcon(image2);
-		final ImageIcon image3 = new ImageIcon("resources/icons/brown1.png");
-		final ImageIcon image31 = new ImageIcon("resources/icons/brown2.gif");
-		jb3 = new JButton();
-		jb3.setIcon(image3);
-		final ImageIcon image4 = new ImageIcon("resources/icons/violet1.png");
-		final ImageIcon image41 = new ImageIcon("resources/icons/violet2.gif");
-		jb4 = new JButton();
-		jb4.setIcon(image4);
-		final ImageIcon image5 = new ImageIcon("resources/icons/blue1.png");
-		final ImageIcon image51 = new ImageIcon("resources/icons/blue2.gif");
-		jb5 = new JButton();
-		jb5.setIcon(image5);
-		final ImageIcon image6 = new ImageIcon("resources/icons/dgreen1.png");
-		final ImageIcon image61 = new ImageIcon("resources/icons/dgreen2.gif");
-		jb6 = new JButton();
-		jb6.setIcon(image6);
-		final ImageIcon image7 = new ImageIcon("resources/icons/white1.png");
-		final ImageIcon image71 = new ImageIcon("resources/icons/white2.gif");
-		jb7 = new JButton();
-		jb7.setIcon(image7);
-		final ImageIcon image8 = new ImageIcon("resources/icons/cyan1.png");
-		final ImageIcon image81 = new ImageIcon("resources/icons/cyan2.gif");
-		jb8 = new JButton();
-		jb8.setIcon(image8);
-	
+		for (int y=0;y<9;y++) //Set initial states for all buttons
+		{
+			buttonArray[y]=new JButton();
+			buttonArray[y].setIcon(imageOn[y]);
+		}
+		
+		for(int i = 0; i < 9; i++) {
+		    makeButton(i);
+		}
+		
+		JButton magic = new JButton("Spell");
+        magic.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent event) {
+        		//Call to magic spell activation method
+        	}
+        });
 
-		
-		jb0.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-			    if(changebutton0 % 2 == 0){
-			    	label.setText("String 0");
-			    	jb0.setIcon(image01);
-			    	}
-			    else {jb0.setIcon(image0);}
-			    changebutton0 = changebutton0 + 1;
-			    	jb7.setIcon(image7);
-				   jb1.setIcon(image1);
-				   jb2.setIcon(image2);
-				   jb3.setIcon(image3);
-				   jb4.setIcon(image4);
-				   jb5.setIcon(image5);
-				   jb6.setIcon(image6);
-				   jb8.setIcon(image8);
-			   }
-		 });
-		
-	
-		jb1.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-				   if(changebutton1 % 2 == 0){
-				    	label.setText("String 1");
-				    	jb1.setIcon(image11);
-				    	}
-				    else {jb1.setIcon(image1);}
-				    changebutton1 = changebutton1 + 1;
-				    jb0.setIcon(image0);
-					   jb7.setIcon(image7);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb4.setIcon(image4);
-					   jb5.setIcon(image5);
-					   jb6.setIcon(image6);
-					   jb8.setIcon(image8);
-			    }
-		 
-			   
-		 });
-		
-		jb2.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   
-				   changebutton0 =0;
-					changebutton1 =0;
-				
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-					   if(changebutton2 % 2 == 0){
-					    	label.setText("String 2");
-					    	jb2.setIcon(image21);
-					    	}
-					    else {jb2.setIcon(image2);}
-					    changebutton2 = changebutton2 + 1;
-					    jb0.setIcon(image0);
-						   jb1.setIcon(image1);
-						   jb7.setIcon(image7);
-						   jb3.setIcon(image3);
-						   jb4.setIcon(image4);
-						   jb5.setIcon(image5);
-						   jb6.setIcon(image6);
-						   jb8.setIcon(image8);
-				    }
-		 
-			   
-		 });
-		
-		jb3.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-				   if(changebutton3 % 2 == 0){
-				    	label.setText("String 3");
-				    	jb3.setIcon(image31);
-				    	}
-				    else {jb3.setIcon(image3);}
-				    changebutton3 = changebutton3 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb7.setIcon(image7);
-					   jb4.setIcon(image4);
-					   jb5.setIcon(image5);
-					   jb6.setIcon(image6);
-					   jb8.setIcon(image8);
-			    }
-	 
-		   
-		 });
-		
-		jb4.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-				  
-				   if(changebutton4 % 2 == 0){
-				    	label.setText("String 4");
-				    	jb4.setIcon(image41);
-				    	}
-				    else {jb4.setIcon(image4);}
-				    changebutton4 = changebutton4 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb7.setIcon(image7);
-					   jb5.setIcon(image5);
-					   jb6.setIcon(image6);
-					   jb8.setIcon(image8);
-			    }
-	 
-		 });
-		
-		jb5.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					
-					changebutton6 =0;
-					changebutton7 =0;
-					changebutton8 =0;
-				   
-				   if(changebutton5 % 2 == 0){
-				    	label.setText("String 5");
-				    	jb5.setIcon(image51);
-				    	}
-				    else jb5.setIcon(image5);
-				    changebutton5 = changebutton5 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb4.setIcon(image4);
-					   jb7.setIcon(image7);
-					   jb6.setIcon(image6);
-					   jb8.setIcon(image8);
-			    }
-	 
-		 });
-		
-		jb6.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					
-					changebutton7 =0;
-					changebutton8 =0;
-				   if(changebutton6 % 2 == 0){
-				    	label.setText("String 6");
-				    	jb6.setIcon(image61);
-				    	}
-				    else {jb6.setIcon(image6);}
-				    changebutton6 = changebutton6 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb4.setIcon(image4);
-					   jb5.setIcon(image5);
-					   jb7.setIcon(image7);
-					   jb8.setIcon(image8);
-			    }
-	 
-		 });
-		
-		jb7.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					
-					changebutton8 =0;
-				   
-				   if(changebutton7 % 2 == 0){
-				    	label.setText("String 7");
-				    	jb7.setIcon(image71);
-				    	}
-				    else {jb7.setIcon(image7);}
-				    changebutton7 = changebutton7 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb4.setIcon(image4);
-					   jb5.setIcon(image5);
-					   jb6.setIcon(image6);
-					   jb8.setIcon(image8);
-			    }
-	 
-		 });
-		
-		jb8.addActionListener(new ActionListener(){
-			   public void actionPerformed(ActionEvent arg0) {
-				   changebutton0 =0;
-					changebutton1 =0;
-					changebutton2 =0;
-					changebutton3 =0;
-					changebutton4 =0;
-					changebutton5 =0;
-					changebutton6 =0;
-					changebutton7 =0;
-				
-				   if(changebutton8 % 2 == 0){
-				    	label.setText("String 8");
-				    	jb8.setIcon(image81);
-				    	}
-				    else {jb8.setIcon(image8);}
-				    changebutton8 = changebutton8 + 1;
-				    jb0.setIcon(image0);
-					   jb1.setIcon(image1);
-					   jb2.setIcon(image2);
-					   jb3.setIcon(image3);
-					   jb4.setIcon(image4);
-					   jb5.setIcon(image5);
-					   jb6.setIcon(image6);
-					   jb7.setIcon(image7);
-			    }
-	 
-		 });
-		
-		
-		
 		if(size==4)
 		{
-			jb0.setBounds(0, 0, 120, 125);
-			c.add(jb0);
-			jb1.setBounds(125, 0, 120, 125);
-			c.add(jb1);
-			jb3.setBounds(0, 130, 120, 125);
-			c.add(jb3);
-			jb4.setBounds(125, 130, 120, 125);
-			c.add(jb4);
-			setSize(250, 600);
+			buttonArray[0].setBounds(0, 0, 120, 125);
+			c.add(buttonArray[0]);
+			buttonArray[1].setBounds(125, 0, 120, 125);
+			c.add(buttonArray[1]);
+			buttonArray[3].setBounds(0, 130, 120, 125);
+			c.add(buttonArray[3]);
+			buttonArray[4].setBounds(125, 130, 120, 125);
+			c.add(buttonArray[4]);
+			
+			JLabel scorebar = new JLabel();
+		    scorebar.setPreferredSize(new Dimension(-1, 22));
+		    scorebar.setBorder(LineBorder.createGrayLineBorder());
+		    scorebar.setText("Score: ");
+		    scorebar.setBounds(0,270,1000,25);
+		    c.add(scorebar);
+		    JLabel itembar = new JLabel();
+		    itembar.setPreferredSize(new Dimension(-1, 22));
+		    itembar.setBorder(LineBorder.createGrayLineBorder());
+		    itembar.setText("Spells remaining: ");
+		    itembar.setBounds(0,296,1000,25);
+		    c.add(itembar);
+		    magic.setBounds(150, 270, 100, 50);
+			c.add(magic);
+			setSize(250, 350);
 		}
-		
+
 		if(size==6)
 		{
-			jb0.setBounds(0, 0, 120, 125);
-			c.add(jb0);
-			jb1.setBounds(125, 0, 120, 125);
-			c.add(jb1);
-			jb2.setBounds(250,0, 120, 125);
-			c.add(jb2);
-			jb3.setBounds(0, 130, 120, 125);
-			c.add(jb3);
-			jb4.setBounds(125, 130, 120, 125);
-			c.add(jb4);
-			jb5.setBounds(250, 130, 120, 125);
-			c.add(jb5);
-			setSize(380, 600);
+			buttonArray[0].setBounds(0, 0, 120, 125);
+			c.add(buttonArray[0]);
+			buttonArray[1].setBounds(125, 0, 120, 125);
+			c.add(buttonArray[1]);
+			buttonArray[2].setBounds(250,0, 120, 125);
+			c.add(buttonArray[2]);
+			buttonArray[3].setBounds(0, 130, 120, 125);
+			c.add(buttonArray[3]);
+			buttonArray[4].setBounds(125, 130, 120, 125);
+			c.add(buttonArray[4]);
+			buttonArray[5].setBounds(250, 130, 120, 125);
+			c.add(buttonArray[5]);
+			
+			JLabel scorebar = new JLabel();
+		    scorebar.setPreferredSize(new Dimension(-1, 22));
+		    scorebar.setBorder(LineBorder.createGrayLineBorder());
+		    scorebar.setText("Score: ");
+		    scorebar.setBounds(0,270,1000,25);
+		    c.add(scorebar);
+		    JLabel itembar = new JLabel();
+		    itembar.setPreferredSize(new Dimension(-1, 22));
+		    itembar.setBorder(LineBorder.createGrayLineBorder());
+		    itembar.setText("Spells remaining: ");
+		    itembar.setBounds(0,296,1000,25);
+		    c.add(itembar);
+		    magic.setBounds(275, 270, 100, 50);
+			c.add(magic);
+			setSize(380, 350);
 		}
-		
+
 		if(size==9)
 		{
-		jb0.setBounds(0, 0, 120, 125);
-		c.add(jb0);
-		jb1.setBounds(125, 0, 120, 125);
-		c.add(jb1);
-		jb2.setBounds(250,0, 120, 125);
-		c.add(jb2);
-		jb3.setBounds(0, 130, 120, 125);
-		c.add(jb3);
-		jb4.setBounds(125, 130, 120, 125);
-		c.add(jb4);
-		jb5.setBounds(250, 130, 120, 125);
-		c.add(jb5);
-		jb6.setBounds(0, 260, 120, 125);
-		c.add(jb6);
-		jb7.setBounds(125, 260 , 120, 125);
-		c.add(jb7);
-		jb8.setBounds(250, 260, 120, 125);
-		c.add(jb8);
-		
-		setSize(380, 600);
+			buttonArray[0].setBounds(0, 0, 120, 125);
+			c.add(buttonArray[0]);
+			buttonArray[1].setBounds(125, 0, 120, 125);
+			c.add(buttonArray[1]);
+			buttonArray[2].setBounds(250,0, 120, 125);
+			c.add(buttonArray[2]);
+			buttonArray[3].setBounds(0, 130, 120, 125);
+			c.add(buttonArray[3]);
+			buttonArray[4].setBounds(125, 130, 120, 125);
+			c.add(buttonArray[4]);
+			buttonArray[5].setBounds(250, 130, 120, 125);
+			c.add(buttonArray[5]);
+			buttonArray[6].setBounds(0, 260, 120, 125);
+			c.add(buttonArray[6]);
+			buttonArray[7].setBounds(125, 260 , 120, 125);
+			c.add(buttonArray[7]);
+			buttonArray[8].setBounds(250, 260, 120, 125);
+			c.add(buttonArray[8]);
+			
+			JLabel scorebar = new JLabel();
+		    scorebar.setPreferredSize(new Dimension(-1, 22));
+		    scorebar.setBorder(LineBorder.createGrayLineBorder());
+		    scorebar.setText("Score: ");
+		    scorebar.setBounds(0,415,1000,25);
+		    c.add(scorebar);
+		    JLabel itembar = new JLabel();
+		    itembar.setPreferredSize(new Dimension(-1, 22));
+		    itembar.setBorder(LineBorder.createGrayLineBorder());
+		    itembar.setText("Spells remaining: ");
+		    itembar.setBounds(0,441,1000,25);
+		    c.add(itembar);
+		    magic.setBounds(275, 415, 100, 50);
+			c.add(magic);
+			setSize(380, 500);
 		}
-		
+
 		label.setBounds(180,550,100,30);
 		c.add(label);
-		
-		
 		setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	
+	private void makeButton(final int index){ //Each button initialisation
+		buttonArray[index].addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				label.setText(index+" pressed"); //Test line
+				buttonArray[index].setIcon(imageOn[index]);
+				userInput[index]+=1; //Record the button pressed into the userInput array
+			}
+		});
+}
+
+	public void flash(ArrayList<Integer> inputSequence) //Feed an array of integers into this to get corresponding buttons to flash
+	{
+		for (int i=0;i<inputSequence.size();i++)
+		{
+			int currentButton=inputSequence.get(i);
+			buttonArray[currentButton].setIcon(imageFlash[currentButton]); //Set corresponding icon to animate
+			stopButtonFlash(i); //Set icon back to static image after a delay
+			try{
+				Thread.sleep(500);
+			}
+			catch(InterruptedException e){}
+		}
+	}
+	
+	private void stopButtonFlash(final int c)
+	{
+		Timer sTimer = new Timer(500, new ActionListener() { //Timer set to 1000ms, after that the button icon will be reset to its original static image
+			public void actionPerformed(ActionEvent e) {
+				buttonArray[c].setIcon(imageOn[c]);
+			}
+		});
+		sTimer.start();
+	}
+	
+	public int[] returnUserIn()
+	{
+		return userInput;
+	}
+
 	public JButton getButton(int buttonNo)
 	{
 		return buttonArray[buttonNo];
-		
 	}
 	
 	public static void main(String[] args) {
-		new NullLayout(9);
+		ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+		inputSequence.add(0);
+		inputSequence.add(3);
+		inputSequence.add(2);
+		inputSequence.add(3);
+		inputSequence.add(5);
+		inputSequence.add(5);
+		inputSequence.add(6);
+		inputSequence.add(2);
+		inputSequence.add(8);
+		NullLayout nn1 = new NullLayout(4);
+		nn1.flash(inputSequence);
 	}
 }
