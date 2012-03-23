@@ -17,10 +17,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * 4. You can use the static variable SoundEffect.volume to mute the sound.
  */
 public enum SoundEffect {
-	BUTTON1("scifi002.wav"),   
-	BUTTON2("scifi003.wav"),         
-	BUTTON3("scifi005.wav"),
-	BUTTON4("scifi018.wav"),
+	BUTTON1("button-16.wav"),   
+	BUTTON2("button-17.wav"),         
+	BUTTON3("button-19.wav"),
+	BUTTON4("button-20.wav"),
+	BUTTON5("button-24.wav"),
+	BUTTON6("button-28.wav"),
+	BUTTON7("button-29.wav"),
+	BUTTON8("button-7.wav"),
+	BUTTON9("button-9.wav"),
 	MAINBUTTON("Game_Music.wav");
 
 	// Nested class for specifying volume
