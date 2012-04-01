@@ -175,7 +175,8 @@ public class PrimitiveGUI extends JFrame
 	     oScore.setToolTipText("View leaderboards");
 	     oScore.addActionListener(new ActionListener() {
 	    	 public void actionPerformed(ActionEvent event) {
-	    		 //Insert action here
+	    		 HighscoreDialog hsd = new HighscoreDialog(HighMarkRanking.read());
+	             hsd.setVisible(true);
 	    	 }
 	     });
 	     
